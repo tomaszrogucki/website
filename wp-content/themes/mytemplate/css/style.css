@@ -1,9 +1,17 @@
+@import "styledef.css" all;
+
+html
+{
+	background: url($(bg_pic)) no-repeat center center fixed;
+	background-size: cover;
+}
+
 body
 {
 	font-size: 16px;
 	font-family: verdana;
 	color: white;
-	background-color: color_g;
+	/*background-color: $(color_g);*/
 }
 
 .csstest

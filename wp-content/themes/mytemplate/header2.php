@@ -1,6 +1,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -22,10 +23,49 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 
 	?></title>
-<b id="testt"></b>
+
 <?php
-if(!empty($_POST['userScreenWidth'])) {
-	echo('<p>' . $_POST['userScreenWidth1'] . '</p>');
+	// definitions
+	$themeDir = get_theme_root() . '/' . get_template() . '/';
+	$cssPath = $themeDir . 'css/';
+	$cssCrushPath = $themeDir . 'css-crush/';
+	$phpPath = $themeDir . 'php/';
+	$picturesPath = $themeDir . 'pictures/';
+	$cssStyle = $cssPath . 'style.css';
+	$cssDef = $cssPath . 'styledef.css';
+	$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
+	$makeStyle = $phpPath . 'MakeStyle.php';
+	$bigBackground = $phpPath . 'BigBackground.php';
+?>
+	
+<b id="testt"></b>
+<b id="jq">abcs</b>
+
+
+<script language="javascript" type="text/javascript">
+	var bgPicture = "<?php echo($picturesPaht . 'bg.jpg'); ?>";
+
+	var request = $.ajax({
+		url: "/website/wp-content/themes/mytemplate/php/BigBackground.php",
+		data: {screenWidth: window.screen.width, screenHeight: window.screen.height, background: bgPicture, cssDefText : '@define{color_g:yellow;}\n', cssDef : "<?php echo($cssDef); ?>", cssStyle : "<?php echo($cssStyle); ?>", cssCrush : "<?php echo($cssCrushPhp); ?>", makeStyle : <?php echo($makeStyle); ?>},
+		type: "POST",
+		dataType: "text"
+	});
+	
+	request.done(function(msg) {
+		$('#jq').text(msg);
+		$('head').append('<link rel="stylesheet" type="text/css" href="' + msg + ''">');
+	});
+	
+	request.fail(function(jqXHR, textStatus) {
+		alert( "Request failed: " + textStatus );
+	});
+</script>
+
+
+<?php
+if(!empty($_POST['userScreenWidth1'])) {
+	echo('<p> The user screen width: ' . $_POST['userScreenWidth1'] . '</p>');
 }
 else
 {
@@ -58,24 +98,33 @@ else
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
+
+
 <?php 
-$themedir=get_theme_root() . '/' . get_template() . '/';
-
-$fp = fopen($themedir . 'styledefs.css', "w+");
-if (flock($fp, LOCK_EX)) { // do an exclusive lock
-    fwrite($fp, "@define{color_g:blue;}\n");
-    flock($fp, LOCK_UN); // release the lock
-} else {
-    echo "Couldn't lock the file !";
-}
-fclose($fp);
-
-require_once($themedir . 'csscrush/CssCrush.php');
-echo(file_exists($themedir . 'csscrush/CssCrush.php'));
-echo(file_exists($themedir . 'styletest.css'));
-$compiled_file = csscrush_file($themedir . 'styletest.css');
+//$themedir=get_theme_root() . '/' . get_template() . '/';
+//
+//$fp = fopen($themedir . $cssDef, "w+");
+//if (flock($fp, LOCK_EX)) { // do an exclusive lock
+//    fwrite($fp, "@define{color_g:blue;}\n");
+//    flock($fp, LOCK_UN); // release the lock
+//} else {
+//    echo "Couldn't lock the file !";
+//}
+//fclose($fp);
+//
+//require_once($themedir . $cssCrushPhp);
+//echo(file_exists($themedir . $cssCrushPhp));
+//$compiled_file = csscrush_file($themedir . $cssStyle);
 ?>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo($compiled_file); ?>" />
+
+
+<?php
+//	require_once($makeStyle);
+//	// TODO: if $compiledCss is empty - something went wrong
+//	$compiledCss = MakeStyle::compileFile($cssCrushPhp, $cssDef, $cssStyle, '@define{color_g:green;}\n');
+?>
+
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo($compiledCss); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>

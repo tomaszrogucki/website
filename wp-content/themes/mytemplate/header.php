@@ -22,59 +22,49 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 
 	?></title>
-<b id="testt"></b>
+
 <?php
-if(!empty($_POST['userScreenWidth'])) {
-	echo('<p>' . $_POST['userScreenWidth1'] . '</p>');
-}
-else
-{
-	echo(
-		'<script language="JavaScript">
-		<!--
-		function sleep(milliseconds) {
-		  var start = new Date().getTime();
-		  for (var i = 0; i < 1e7; i++) {
-			if ((new Date().getTime() - start) > milliseconds){
-			  break;
-			}
-		  }
-		}
-
-		xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("POST", document.URL, true);
-		var screenW = "userScreenWidth1="+window.screen.width;
-		document.getElementById("testt").innerHTML = screenW;
-
-		sleep(5000);
-		xmlhttp.send("userScreenWidth1="+window.screen.width);
-		-->
-		</script>'
-
-	);
-}
+	// definitions
+	$themeDir = get_theme_root() . '/' . get_template() . '/';
+	$cssPath = $themeDir . 'css/';
+	$cssCrushPath = $themeDir . 'css-crush/';
+	$phpPath = $themeDir . 'php/';
+	$picturesPath = $themeDir . 'pictures/';
+	$jqueryPath = $themeDir . 'jquery/';
+	$cssStyle = $cssPath . 'style.css';
+	$cssDef = $cssPath . 'styledef.css';
+	$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
+	$makeStyle = $phpPath . 'MakeStyle.php';
+	$bigBackground = $phpPath . 'BigBackground.php';
+	$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
 ?>
+
+<script src="/website/wp-content/themes/mytemplate/jquery/jquery-1.9.1.min.js"></script>
+<script src="/website/wp-content/themes/mytemplate/javascript/loadstyle.js"></script>
+	
+<b id="jq">abcs</b>
+
+<script language="javascript" type="text/javascript">
+	var screenWidth = window.screen.width;
+	var screenHeight = window.screen.height;
+	var bgPath = "<?php echo($picturesPath . 'backgrounds/'); ?>";
+	var bgPicture = "bg.jpg";
+	var cssDefText = "@define{color_g:blue;}\n";
+	var cssDef = "<?php echo($cssDef); ?>";
+	var cssStyle = "<?php echo($cssStyle); ?>";
+	var cssCrush = "<?php echo($cssCrushPhp); ?>";
+	var makeStyle = "<?php echo($makeStyle); ?>";
+	var bigBackground = "/website/wp-content/themes/mytemplate/php/BigBackground.php";
+	
+	loadStyle(screenWidth, screenHeight, bgPath, bgPicture, cssDefText, cssDef, cssStyle, cssCrush, makeStyle, bigBackground);
+</script>
+
 
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
-<?php 
-$themedir=get_theme_root() . '/' . get_template() . '/';
 
-$fp = fopen($themedir . 'styledefs.css', "w+");
-if (flock($fp, LOCK_EX)) { // do an exclusive lock
-    fwrite($fp, "@define{color_g:blue;}\n");
-    flock($fp, LOCK_UN); // release the lock
-} else {
-    echo "Couldn't lock the file !";
-}
-fclose($fp);
 
-require_once($themedir . 'csscrush/CssCrush.php');
-echo(file_exists($themedir . 'csscrush/CssCrush.php'));
-$compiled_file = csscrush_file($themedir . 'styletest.css');
-?>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo($compiled_file); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
