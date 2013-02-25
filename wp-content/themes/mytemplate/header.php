@@ -25,38 +25,44 @@
 
 <?php
 	// definitions
-	$themeDir = get_theme_root() . '/' . get_template() . '/';
-	$cssPath = $themeDir . 'css/';
-	$cssCrushPath = $themeDir . 'css-crush/';
-	$phpPath = $themeDir . 'php/';
-	$picturesPath = $themeDir . 'pictures/';
-	$jqueryPath = $themeDir . 'jquery/';
-	$cssStyle = $cssPath . 'style.css';
-	$cssDef = $cssPath . 'styledef.css';
-	$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
-	$makeStyle = $phpPath . 'MakeStyle.php';
-	$bigBackground = $phpPath . 'BigBackground.php';
-	$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
+//	$themeDir = get_theme_root() . '/' . get_template() . '/';
+//	echo(get_theme_root() . "<br/>");
+//	echo(bloginfo('wpurl') . "<br/>");
+//	echo(site_url("abc") . "<br/>");
+//	echo(get_home_url() . "<br/>");
+//	$cssPath = $themeDir . 'css/';
+//	$cssCrushPath = $themeDir . 'css-crush/';
+//	$phpPath = $themeDir . 'php/';
+//	$picturesPath = $themeDir . 'pictures/';
+//	$jqueryPath = $themeDir . 'jquery/';
+//	$cssStyle = $cssPath . 'style.css';
+//	$cssDef = $cssPath . 'styledef.css';
+//	$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
+//	$makeStyle = $phpPath . 'MakeStyle.php';
+//	$bigBackground = $phpPath . 'BigBackground.php';
+//	$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
 ?>
 
-<script src="/website/wp-content/themes/mytemplate/jquery/jquery-1.9.1.min.js"></script>
-<script src="/website/wp-content/themes/mytemplate/javascript/loadstyle.js"></script>
+<?php require_once('php/config.php'); ?>
+
+<script src="<?php echo(WEB_ROOT . JQUERY); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/loadstyle.js'); ?>"></script>
 	
 <b id="jq">abcs</b>
 
 <script language="javascript" type="text/javascript">
 	var screenWidth = window.screen.width;
 	var screenHeight = window.screen.height;
-	var bgPath = "<?php echo($picturesPath . 'backgrounds/'); ?>";
-	var bgPicture = "bg.jpg";
+//	var bgPath = "<?php echo(SERVER_ROOT . 'pictures/backgrounds/'); ?>";
+	var bgPicture = "bgPanoramic.jpg";
 	var cssDefText = "@define{color_g:blue;}\n";
-	var cssDef = "<?php echo($cssDef); ?>";
-	var cssStyle = "<?php echo($cssStyle); ?>";
-	var cssCrush = "<?php echo($cssCrushPhp); ?>";
-	var makeStyle = "<?php echo($makeStyle); ?>";
-	var bigBackground = "/website/wp-content/themes/mytemplate/php/BigBackground.php";
+//	var cssDef = "<?php echo($cssDef); ?>";
+//	var cssStyle = "<?php echo($cssStyle); ?>";
+//	var cssCrush = "<?php echo($cssCrushPhp); ?>";
+//	var makeStyle = "<?php echo($makeStyle); ?>";
+	var bigBackground = "<?php echo(WEB_ROOT . 'php/BigBackground.php'); ?>";
 	
-	loadStyle(screenWidth, screenHeight, bgPath, bgPicture, cssDefText, cssDef, cssStyle, cssCrush, makeStyle, bigBackground);
+	loadStyle(screenWidth, screenHeight, bgPicture, cssDefText, bigBackground);
 </script>
 
 

@@ -1,8 +1,8 @@
-function loadStyle(screenWidth, screenHeight, bgPath, bgPicture, cssDefText, cssDef, cssStyle, cssCrush, makeStyle, bigBackground)
+function loadStyle(screenWidth, screenHeight, bgPicture, cssDefText, bigBackground)
 {
 	var request = $.ajax({
 		url: bigBackground,
-		data: {screenWidth : screenWidth, screenHeight : screenHeight, bgPath : bgPath, bgPicture : bgPicture, cssDefText : cssDefText, cssDef : cssDef, cssStyle : cssStyle, cssCrush : cssCrush, makeStyle : makeStyle},
+		data: {screenWidth : screenWidth, screenHeight : screenHeight, bgPicture : bgPicture, cssDefText : cssDefText, bigBackground : bigBackground},
 		type: "POST",
 		dataType: "text"
 	});
