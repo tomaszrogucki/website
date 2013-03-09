@@ -14,20 +14,20 @@
 	
 	
 
-//$themeDir = get_theme_root() . '/' . get_template() . '/';
-//echo(get_theme_root() . "<br/>");
-//echo(bloginfo('wpurl') . "<br/>");
-//echo(site_url("abc") . "<br/>");
-//echo(get_home_url() . "<br/>");
-//$cssPath = $themeDir . 'css/';
-//$cssCrushPath = $themeDir . 'css-crush/';
-//$phpPath = $themeDir . 'php/';
-//$picturesPath = $themeDir . 'pictures/';
-//$jqueryPath = $themeDir . 'jquery/';
-//$cssStyle = $cssPath . 'style.css';
-//$cssDef = $cssPath . 'styledef.css';
-//$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
-//$makeStyle = $phpPath . 'MakeStyle.php';
-//$bigBackground = $phpPath . 'BigBackground.php';
-//$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
+	//$themeDir = get_theme_root() . '/' . get_template() . '/';
+	//echo(get_theme_root() . "<br/>");
+	//echo(bloginfo('wpurl') . "<br/>");
+	//echo(site_url("abc") . "<br/>");
+	//echo(get_home_url() . "<br/>");
+	//$cssPath = $themeDir . 'css/';
+	//$cssCrushPath = $themeDir . 'css-crush/';
+	//$phpPath = $themeDir . 'php/';
+	//$picturesPath = $themeDir . 'pictures/';
+	//$jqueryPath = $themeDir . 'jquery/';
+	//$cssStyle = $cssPath . 'style.css';
+	//$cssDef = $cssPath . 'styledef.css';
+	//$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
+	//$makeStyle = $phpPath . 'MakeStyle.php';
+	//$bigBackground = $phpPath . 'BigBackground.php';
+	//$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
 ?>

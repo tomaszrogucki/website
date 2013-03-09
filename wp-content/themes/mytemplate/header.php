@@ -21,55 +21,35 @@
 	if ( $paged >= 2 || $page >= 2 )
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 
-	?></title>
+	?>
+</title>
 
-<?php
-	// definitions
-//	$themeDir = get_theme_root() . '/' . get_template() . '/';
-//	echo(get_theme_root() . "<br/>");
-//	echo(bloginfo('wpurl') . "<br/>");
-//	echo(site_url("abc") . "<br/>");
-//	echo(get_home_url() . "<br/>");
-//	$cssPath = $themeDir . 'css/';
-//	$cssCrushPath = $themeDir . 'css-crush/';
-//	$phpPath = $themeDir . 'php/';
-//	$picturesPath = $themeDir . 'pictures/';
-//	$jqueryPath = $themeDir . 'jquery/';
-//	$cssStyle = $cssPath . 'style.css';
-//	$cssDef = $cssPath . 'styledef.css';
-//	$cssCrushPhp = $cssCrushPath . 'CssCrush.php';
-//	$makeStyle = $phpPath . 'MakeStyle.php';
-//	$bigBackground = $phpPath . 'BigBackground.php';
-//	$jquery = $jqueryPath . 'jquery-1.9.1.min.js';
-?>
+
+
+<!-- Build style here -->
 
 <?php require_once('php/config.php'); ?>
 
 <script src="<?php echo(WEB_ROOT . JQUERY); ?>"></script>
 <script src="<?php echo(WEB_ROOT . 'javascript/loadstyle.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/uploadpicture.js'); ?>"></script>
 	
-<b id="jq">abcs</b>
-
 <script language="javascript" type="text/javascript">
 	var screenWidth = window.screen.width;
 	var screenHeight = window.screen.height;
-//	var bgPath = "<?php echo(SERVER_ROOT . 'pictures/backgrounds/'); ?>";
 	var bgPicture = "bgPanoramic.jpg";
 	var cssDefText = "@define{color_g:blue;}\n";
-//	var cssDef = "<?php echo($cssDef); ?>";
-//	var cssStyle = "<?php echo($cssStyle); ?>";
-//	var cssCrush = "<?php echo($cssCrushPhp); ?>";
-//	var makeStyle = "<?php echo($makeStyle); ?>";
 	var bigBackground = "<?php echo(WEB_ROOT . 'php/BigBackground.php'); ?>";
 	
 	loadStyle(screenWidth, screenHeight, bgPicture, cssDefText, bigBackground);
 </script>
 
+<!-- End of Build style here -->
+
 
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
-
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
@@ -91,10 +71,3 @@
 ?>
 </head>
 
-<div id="container">
-	<p>themedir : <?php echo($themedir); ?></p>
-	<p>compiled file : <?php echo($compiled_file); ?></p>
-	<p>theme root : <?php echo(get_theme_root()); ?></p>
-	<p>get_template() : <?php echo(get_template()); ?></p>
-	<p>here => <?php $fileurl=get_theme_root() . '/' . get_template() . '/styletest.css'; echo($fileurl. ' '); if(file_exists($fileurl)) echo('yes'); else echo('no'); ?></p>
-</div>
