@@ -50,11 +50,16 @@ h1
 	font-size: 2em;
 }
 
+p
+{
+	margin: 0em;
+}
+
 a
 {
 	color: rgba(255,255,255,1);
 	font-weight: bold;
-	font-decoration: underline;
+	text-decoration: underline;
 }
 
 form
@@ -77,6 +82,11 @@ textarea
 	outline: none;
 	font-family: 'MavenPro', Arial, Helvetica, sans-serif;
 	color: rgba(255,255,255,1);
+}
+
+img
+{
+	border: 0px solid rgba(0,0,0,0.4);
 }
 
 .submit
@@ -230,6 +240,7 @@ textarea
 .rowCommentWrap
 {
 	overflow: auto; /* float border fix */
+	display: none;
 }
 
 .rowCommentEven
@@ -269,7 +280,8 @@ textarea
 .rowCommentAddComment
 {
 	padding: 1em;
-	background-color: rgba(0,0,0,0.8);
+	padding-left: 2em;
+	background-color: rgba(0,0,0,0.4);
 }
 
 .rowFullWrap
@@ -325,7 +337,131 @@ textarea
 	letter-spacing: 0.1em;
 }
 
+.logoTextLink
+{
+	text-decoration: none;
+}
+
 .loginForm
 {
 	display: inline-block;
+}
+
+.postPicture
+{
+	margin-bottom: 1em;
+    max-width: 100%;
+	box-shadow: 0em 0em 1em 0em rgba(0,0,0,1);
+	/*border: 1px solid rgba(255,255,255,0.2);*/
+}
+
+.titleWrap
+{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	padding: 0.5em;
+	background-color: rgba(0,0,0,0.8);
+	font-size: 2em;
+	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+}
+
+.pictureBottomBar
+{
+	position: absolute;
+	width: 100%;
+	left: 0em;
+	bottom: 1em;
+}
+
+.contentWrap
+{
+	clear: both;
+	width: 100%;
+	background-color: rgba(0,0,0,0.9);
+}
+
+.contentText
+{
+	padding: 1em;
+	font-size: 1.2em;
+}
+
+.cityWrap
+{
+	clear: both;
+	float: right;
+	background-color: rgba(0,0,0,0.8);
+	text-align: right;
+}
+
+.cityText
+{
+	padding: 0.5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: 1.2em;
+}
+
+.exifWrap
+{
+	float: right;
+	background-color: rgba(0,0,0,0.6);
+	text-align: center;
+}
+
+.exif
+{
+	margin: 0.5em;
+	font-size: 1.5em;
+}
+
+.exifDesc
+{
+	display: inline-block;
+	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+}
+
+.postPictureWrap
+{
+	position: relative;
+}
+
+.postContent
+{
+	font-size: 1.5em;
+}
+
+.triangleRight
+{
+	width: 0em;
+	height: 0em;
+	margin: 0em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	display: inline-block;
+	border-top: 0.4em solid transparent;
+	border-left: 0.4em solid rgba(255,255,255,1);
+	border-bottom: 0.4em solid transparent;
+	border-right: 0.4em solid transparent;
+}
+
+.triangleBottom
+{
+	width: 0em;
+	height: 0em;
+	margin: 0em;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+	display: inline-block;
+	border-top: 0.4em solid rgba(255,255,255,1);
+	border-left: 0.4em solid transparent;
+	border-bottom: 0.4em solid transparent;
+	border-right: 0.4em solid transparent;
+}
+
+.commentShow
+{
+	cursor: hand;
+	margin-left: 1em;
 }

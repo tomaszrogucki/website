@@ -6,6 +6,7 @@
 	// global definitions
 	define('SERVER_ROOT', get_theme_root() . '/' . get_template() . '/');
 	define('WEB_ROOT', site_url('wp-content/themes/' . get_template() . '/'));
+	define('WEB_MAIN', site_url());
 	
 	define('CSSCRUSH', 'css-crush/CssCrush.php');
 	define('CSSSTYLE', 'css/style.css');
