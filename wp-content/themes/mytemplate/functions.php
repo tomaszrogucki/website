@@ -26,4 +26,35 @@ function my_login_incompltete(){
 }
 
 
+add_action( 'init', 'photo_post_type' );
+
+function photo_post_type() {
+	register_post_type( 'photo',
+	array(
+		'labels' => array(
+			'name' => __( 'Photos' ),
+			'singular_name' => __( 'Photo' )
+		),
+		'public' => true,
+		'has_archive' => true,
+	)
+	);
+}
+
+
+add_action( 'init', 'location_post_type' );
+
+function location_post_type() {
+	register_post_type( 'location',
+	array(
+		'labels' => array(
+			'name' => __( 'Location' ),
+			'singular_name' => __( 'Location' )
+		),
+		'public' => true,
+		'has_archive' => true,
+	)
+	);
+}
+
 ?>

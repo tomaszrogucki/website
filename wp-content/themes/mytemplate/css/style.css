@@ -2,6 +2,10 @@
 
 @define{color_g:blue;}
 
+
+@define{dark_bg:rgba(0,0,0,0.8);}
+@define{light_bg:rgba(0,0,0,0.4);}
+
 @font-face {
 	font-family: MavenPro;
 	src: url('MavenProRegular.ttf');
@@ -32,7 +36,7 @@ html
 	background-size: cover;
 	font-size: 14px;
 	font-family: 'MavenPro', Arial, Helvetica, sans-serif;
-	color: rgba(255,255,255,1);s
+	color: rgba(255,255,255,1);
 }
 
 body
@@ -84,6 +88,11 @@ textarea
 	color: rgba(255,255,255,1);
 }
 
+input[type="submit"]
+{
+	cursor: hand;
+}
+
 img
 {
 	border: 0px solid rgba(0,0,0,0.4);
@@ -112,12 +121,21 @@ img
 	width: 100%;
 	height: 3em;
     display:block;
-	background-color: rgba(0,0,0,0.8);
+	background-color: $(dark_bg);
 	font-size: 1em;
 	padding: 0em;
 }
 
 #bottombar
+{
+	background-color: rgba(0,0,0,0.5);
+	font-size: 1em;
+	padding: 0em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#copyrightbar
 {
 	background-color: rgba(0,0,0,0.8);
 	font-size: 1em;
@@ -132,6 +150,20 @@ img
 	width: 100%;
 	height: 100%;
 	overflow: auto;
+}
+
+#navigation
+{
+	font-family: JosefinSlab;
+	font-size: 1.5em;
+	font-style: italic;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+}
+
+#navigation a
+{
+	text-decoration: none;
 }
 
 .row
@@ -197,6 +229,7 @@ img
 .rowLabelAuthor
 {
 	padding: 0.5em;
+	overflow-x: hidden;
 	text-align: center;
 	font-size: 1.5em;
 	background-color: rgba(0,0,0,0.4);
@@ -246,11 +279,13 @@ img
 .rowCommentEven
 {
 	background-color: rgba(0,0,0,0.5);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .rowCommentOdd
 {
 	background-color: rgba(0,0,0,0.4);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .rowCommentAuthorWrap
@@ -270,6 +305,11 @@ img
 	padding: 1em;
 	text-align: right;
 	font-weight: bold;
+}
+
+.rowCommentAuthorDate
+{
+	font-weight: normal;
 }
 
 .rowCommentContent
@@ -293,10 +333,15 @@ img
 {
 	margin-bottom: 0em;
 	margin-top: 1em;
-	padding-left: 1em; /* check this */
+	padding-left: 2em; /* check this */
 }
 
 .rowBottomBar
+{
+	margin-bottom: 0em;
+}
+
+.rowCopyrightBar
 {
 	margin-bottom: 0em;
 }
@@ -306,6 +351,13 @@ img
 	padding: 1em;
 	padding-left: 1.5em;
 	padding-right: 1.5em;
+}
+
+.rowContentCopyrightBar
+{
+	padding: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
 }
 
 .logo
@@ -333,8 +385,26 @@ img
 
 .logoText
 {
+	position: relative;
+	font-family: "JosefinSlab";
 	font-size: 4em;
+	font-style: italic;
+	font-weight: bold;
 	letter-spacing: 0.1em;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+}
+
+.logoText:after
+{
+	content: "Photo Diary";
+	position: absolute;
+	bottom: 0em;
+	right: 0em;
+	margin-right: 0.3em;
+	margin-bottom: -0.2em;
+	font-size: 0.25em;
+	font-family: "MavenPro";
+	letter-spacing: 0.28em;
 }
 
 .logoTextLink
@@ -364,6 +434,7 @@ img
 	background-color: rgba(0,0,0,0.8);
 	font-size: 2em;
 	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
 }
 
 .pictureBottomBar
@@ -414,12 +485,18 @@ img
 {
 	margin: 0.5em;
 	font-size: 1.5em;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
 }
 
 .exifDesc
 {
 	display: inline-block;
 	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+}
+
+.cityText b
+{
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
 }
 
 .postPictureWrap
@@ -464,4 +541,68 @@ img
 {
 	cursor: hand;
 	margin-left: 1em;
+}
+
+.shaddowRed
+{
+	box-shadow: 0em 0em 0.5em 0em red;
+}
+
+.locationCity
+{
+	display: inline-block;
+	margin: 0em;
+	margin-left: 0.66em; /* figure out sth better */
+	padding: 0em;
+	font-size: 1.5em;
+	font-family: JosefinSlab;
+	font-style: italic;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+}
+
+.locationCountry
+{
+	display: inline-block;
+	margin-left: 0.5em;
+	font-size: 1.5em;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+}
+
+.noBorderBottom
+{
+	border-bottom: 0em solid rgba(255,255,255,0.1) !important;
+}
+
+.page-numbers
+{
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+
+.page-numbers.current
+{
+	font-size: 1.5em;
+}
+
+.quotationWrap
+{
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.quotation
+{
+	padding: 1em;
+	padding-bottom: 0em;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+}
+
+.quotationAuthor
+{
+	padding: 1em;
+	padding-top: 0em;
+	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+	text-align: right;
+	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
 }

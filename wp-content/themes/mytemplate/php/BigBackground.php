@@ -12,6 +12,7 @@
 		$resizedPicture = ''; // server path to the resized image
 		$resizedPictureWeb = ''; // web path to the resized image
 		$bgPath = 'pictures/backgrounds/';
+		$quality = 60;
 		
 		$image->load(SERVER_ROOT . $bgPath . $_POST['bgPicture']);
 		$imageRatio = $image->getWidth() / $image->getHeight();
@@ -24,7 +25,7 @@
 			if(!file_exists($resizedPicture))
 			{
 				$image->resizeToHeight($_POST['screenHeight']);
-				$image->save($resizedPicture);
+				$image->save($resizedPicture,IMAGETYPE_JPEG,$quality);
 			}
 		}
 		else
@@ -35,7 +36,7 @@
 			if(!file_exists($resizedPicture))
 			{
 				$image->resizeToWidth($_POST['screenWidth']);
-				$image->save($resizedPicture);
+				$image->save($resizedPicture,IMAGETYPE_JPEG,$quality);
 			}
 		}
 		

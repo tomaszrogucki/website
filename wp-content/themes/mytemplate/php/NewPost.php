@@ -7,7 +7,7 @@
 	{
 		if(!empty($_POST['newPostDate']))
 		{
-			$date = date('Y-m-d H:i:s', strtotime($_POST['newPostDate']));
+			$date = date('Y-m-d H:i:s', strtotime(trim($_POST['newPostDate'])));
 		}
 		else
 		{
@@ -15,23 +15,23 @@
 		}
 
 		$new_post = array(
-				'post_title' => $_POST['newPostTitle'],
-				'post_content' => $_POST['newPostDescription'],
+				'post_title' => trim($_POST['newPostTitle']),
+				'post_content' => trim($_POST['newPostDescription']),
 				'post_status' => 'publish',
 				'post_date' => $date,
 				'post_author' => $_POST['newPostUserId'],
-				'post_type' => 'post',
+				'post_type' => 'photo',
 				'post_category' => array(0)
 		);
 		$post_id = wp_insert_post($new_post);
 		
-		add_post_meta($post_id, "iso", $_POST['newPostIso'], true);
-		add_post_meta($post_id, "shutter", $_POST['newPostShutter'], true);
-		add_post_meta($post_id, "aperture", $_POST['newPostAperture'], true);
-		add_post_meta($post_id, "zoom", $_POST['newPostZoom'], true);
-		add_post_meta($post_id, "path", $_POST['newPostPath'], true);
-		add_post_meta($post_id, "country", $_POST['newPostCountry'], true);
-		add_post_meta($post_id, "city", $_POST['newPostCity'], true);
+		add_post_meta($post_id, "iso", trim($_POST['newPostIso']), true);
+		add_post_meta($post_id, "shutter", trim($_POST['newPostShutter']), true);
+		add_post_meta($post_id, "aperture", trim($_POST['newPostAperture']), true);
+		add_post_meta($post_id, "zoom", trim($_POST['newPostZoom']), true);
+		add_post_meta($post_id, "path", trim($_POST['newPostPath']), true);
+		add_post_meta($post_id, "country", trim($_POST['newPostCountry']), true);
+		add_post_meta($post_id, "city", trim($_POST['newPostCity']), true);
 	
 	echo('<META HTTP-EQUIV="Refresh" Content="0; URL=' . $_POST['newPostReferer'] . '">');
 	exit;

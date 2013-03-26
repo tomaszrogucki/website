@@ -12,3 +12,5 @@
 //	require_once('../php/RelativePath.php');
 //	echo(RelativePath::makePath('A/b','/a/b/asd'));
 ?>
+
+	<img src="pic.php" />

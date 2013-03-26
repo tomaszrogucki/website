@@ -33,6 +33,7 @@
 <script src="<?php echo(WEB_ROOT . JQUERY); ?>"></script>
 <script src="<?php echo(WEB_ROOT . 'javascript/loadstyle.js'); ?>"></script>
 <script src="<?php echo(WEB_ROOT . 'javascript/uploadpicture.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/resizepicture.js'); ?>"></script>
 	
 <script language="javascript" type="text/javascript">
 	var screenWidth = window.screen.width;
@@ -43,6 +44,10 @@
 	
 	loadStyle(screenWidth, screenHeight, bgPicture, cssDefText, bigBackground);
 </script>
+
+<!--
+<link href="<?php echo(WEB_ROOT . 'javascript/jquery.mCustomScrollbar.css'); ?>" rel="stylesheet" type="text/css" />
+-->
 
 <!-- End of Build style here -->
 
@@ -59,15 +64,15 @@
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
 	 */
-	if ( is_singular() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply' );
+//	if ( is_singular() && get_option( 'thread_comments' ) )
+//		wp_enqueue_script( 'comment-reply' );
 
 	/* Always have wp_head() just before the closing </head>
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
-	wp_head();
+//	wp_head();
 ?>
 </head>
 
