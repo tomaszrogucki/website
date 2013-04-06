@@ -22,9 +22,13 @@
 		}
 		else
 		{
-			$themes = glob(SERVER_ROOT . $themePath . '*');
-			$theme = basename($themes[mt_rand(0,count($themes)-1)]);
-// 			$theme = 'default.css';
+			require_once('RandomTheme.php');
+			$theme = RandomTheme::getTheme();
+			
+// 			$themes = glob(SERVER_ROOT . $themePath . '*');
+// 			$theme = basename($themes[mt_rand(0,count($themes)-1)]);
+// // 			$theme = 'default.css';
+
 			$themeContent = file(SERVER_ROOT . $themePath . $theme);
 			
 		}

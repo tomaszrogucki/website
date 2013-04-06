@@ -52,9 +52,9 @@
 //	var screenHeight = window.screen.height;
 //	var bgPicture = "bgPanoramic.jpg";
 //	var cssDefText = "@define{color_g:blue;}\n";
+//	var themeContent = "/*bgVertical.jpg*/\n|||| @define{dark_bg:rgba(0,0,0,0.8);} @define{light_bg:rgba(0,0,0,0.4);} @define{text_color:rgba(255,255,255,1);} @define{input_bg:rgba(255,255,255,0.4);} @define{submit_bg:rgba(255,255,255,0.6);} @define{comment_even_bg:rgba(0,0,0,0.5);} @define{shadow:rgba(0,0,0,1);} @define{comment_separator:rgba(255,255,255,0.1);} @define{content_bg:rgba(0,0,0,0.9);} @define{exif_bg:rgba(0,0,0,0.6);} @define{font_normal:MavenPro, Arial, Helvetica, sans-serif;} @define{font_fancy:JosefinSlab, Arial, Helvetica, sans-serif;}";
+
 	var bigBackground = "<?php echo(WEB_ROOT . 'php/BigBackground.php'); ?>";
-	
-	var themeContent = "/*bgVertical.jpg*/\n|||| @define{dark_bg:rgba(0,0,0,0.8);} @define{light_bg:rgba(0,0,0,0.4);} @define{text_color:rgba(255,255,255,1);} @define{input_bg:rgba(255,255,255,0.4);} @define{submit_bg:rgba(255,255,255,0.6);} @define{comment_even_bg:rgba(0,0,0,0.5);} @define{shadow:rgba(0,0,0,1);} @define{comment_separator:rgba(255,255,255,0.1);} @define{content_bg:rgba(0,0,0,0.9);} @define{exif_bg:rgba(0,0,0,0.6);} @define{font_normal:MavenPro, Arial, Helvetica, sans-serif;} @define{font_fancy:JosefinSlab, Arial, Helvetica, sans-serif;}";
 	
 	loadStyle(bigBackground);
 </script>

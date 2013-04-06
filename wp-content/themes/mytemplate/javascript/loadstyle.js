@@ -8,7 +8,8 @@ function loadStyle(bigBackground, themeContent)
 	});
 	
 	request.done(function(msg) {
-		$('head').append('<link rel="stylesheet" type="text/css" href="' + msg + '">');
+		$('head').append('<link rel="stylesheet" type="text/css" href="' + msg + '"/>');
+//		$('head').last(link).attr('href', msg);
 	});
 	
 	request.fail(function(jqXHR, textStatus) {
