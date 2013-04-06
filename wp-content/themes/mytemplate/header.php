@@ -1,27 +1,31 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<meta name="description" content="This website is a Photo Diary of my RTW trip. You will find here the best moments of this journey captured with a reflex camera Nikon D5000.">
+<meta name="keywords" content="Tomasz Rogucki, RTW, Round The World, trip, journey, photo, photography, photo diary, photo blog, backpacking">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
 	 */
-	global $page, $paged;
+// 	global $page, $paged;
 
-	wp_title( '|', true, 'right' );
+// 	wp_title( '|', true, 'right' );
 
-	// Add the blog name.
-	bloginfo( 'name' );
+// 	// Add the blog name.
+// 	bloginfo( 'name' );
 
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo " | $site_description";
+// 	// Add the blog description for the home/front page.
+// 	$site_description = get_bloginfo( 'description', 'display' );
+// 	if ( $site_description && ( is_home() || is_front_page() ) )
+// 		echo " | $site_description";
 
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
+// 	// Add a page number if necessary:
+// 	if ( $paged >= 2 || $page >= 2 )
+// 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 
 	?>
+	
+	tomaszrogucki.com PhotoDiary
 </title>
 
 
@@ -34,15 +38,25 @@
 <script src="<?php echo(WEB_ROOT . 'javascript/loadstyle.js'); ?>"></script>
 <script src="<?php echo(WEB_ROOT . 'javascript/uploadpicture.js'); ?>"></script>
 <script src="<?php echo(WEB_ROOT . 'javascript/resizepicture.js'); ?>"></script>
-	
+<script src="<?php echo(WEB_ROOT . 'javascript/readcsstheme.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/listfiles.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/uploadthemefile.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/spectrum.js'); ?>"></script>
+<script src="<?php echo(WEB_ROOT . 'javascript/savetheme.js'); ?>"></script>
+
+<link rel='stylesheet' href="<?php echo(WEB_ROOT . 'css/spectrum.css'); ?>" />
+
+
 <script language="javascript" type="text/javascript">
-	var screenWidth = window.screen.width;
-	var screenHeight = window.screen.height;
-	var bgPicture = "bgPanoramic.jpg";
-	var cssDefText = "@define{color_g:blue;}\n";
+//	var screenWidth = window.screen.width;
+//	var screenHeight = window.screen.height;
+//	var bgPicture = "bgPanoramic.jpg";
+//	var cssDefText = "@define{color_g:blue;}\n";
 	var bigBackground = "<?php echo(WEB_ROOT . 'php/BigBackground.php'); ?>";
 	
-	loadStyle(screenWidth, screenHeight, bgPicture, cssDefText, bigBackground);
+	var themeContent = "/*bgVertical.jpg*/\n|||| @define{dark_bg:rgba(0,0,0,0.8);} @define{light_bg:rgba(0,0,0,0.4);} @define{text_color:rgba(255,255,255,1);} @define{input_bg:rgba(255,255,255,0.4);} @define{submit_bg:rgba(255,255,255,0.6);} @define{comment_even_bg:rgba(0,0,0,0.5);} @define{shadow:rgba(0,0,0,1);} @define{comment_separator:rgba(255,255,255,0.1);} @define{content_bg:rgba(0,0,0,0.9);} @define{exif_bg:rgba(0,0,0,0.6);} @define{font_normal:MavenPro, Arial, Helvetica, sans-serif;} @define{font_fancy:JosefinSlab, Arial, Helvetica, sans-serif;}";
+	
+	loadStyle(bigBackground);
 </script>
 
 <!--

@@ -1,31 +1,38 @@
 @import "styledef.css" all;
 
-@define{color_g:blue;}
-
-
-@define{dark_bg:rgba(0,0,0,0.8);}
-@define{light_bg:rgba(0,0,0,0.4);}
 
 @font-face {
-	font-family: MavenPro;
-	src: url('MavenProRegular.ttf');
+	font-family: FontNormal;
+	src: url(fonts/$(font_normal_regular));
 }
 
 @font-face {
-	font-family: MavenPro;
-	src: url('MavenProBold.ttf');
+	font-family: FontNormal;
+	src: url(fonts/$(font_normal_bold));
     font-weight: bold;
 }
 
 @font-face {
-	font-family: JosefinSlab;
-	src: url('JosefinSlabRegular.ttf');
+	font-family: FontNormal;
+	src: url(fonts/$(font_normal_italic));
+    font-style: italic;
+}
+
+@font-face {
+	font-family: FontFancy;
+	src: url(fonts/$(font_fancy_regular));
 	font-style: normal;
 }
 
 @font-face {
-	font-family: JosefinSlab;
-	src: url('JosefinSlabItalic.ttf');
+	font-family: FontFancy;
+	src: url(fonts/$(font_fancy_bold));
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: FontFancy;
+	src: url(fonts/$(font_fancy_italic));
 	font-style: italic;
 }
 
@@ -35,8 +42,8 @@ html
 	background: url($(bg_pic)) no-repeat center center fixed;
 	background-size: cover;
 	font-size: 14px;
-	font-family: 'MavenPro', Arial, Helvetica, sans-serif;
-	color: rgba(255,255,255,1);
+	font-family: $(font_normal);
+	color: $(text_color);
 }
 
 body
@@ -50,7 +57,7 @@ h1
 {
 	margin: 0em;
 	padding: 0em;
-	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+	font-family: $(font_fancy);
 	font-size: 2em;
 }
 
@@ -61,7 +68,7 @@ p
 
 a
 {
-	color: rgba(255,255,255,1);
+	color: $(text_color);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -73,19 +80,19 @@ form
 
 input
 {
-	color: rgba(255,255,255,1);
-	border: 0em solid rgba(255,255,255,1);
-	background: rgba(255,255,255,0.4);
+	color: $(text_color);
+	border: 0em solid $(text_color);
+	background-color: $(input_bg);
 }
 
 textarea
 {
-	background: rgba(255,255,255,0.4);
-	border: 0em solid rgba(255,255,255,1);
+	background-color: $(input_bg);
+	border: 0em solid $(text_color);
 	overflow: auto;
 	outline: none;
-	font-family: 'MavenPro', Arial, Helvetica, sans-serif;
-	color: rgba(255,255,255,1);
+	font-family: $(font_normal);
+	color: $(text_color);
 }
 
 input[type="submit"]
@@ -95,14 +102,14 @@ input[type="submit"]
 
 img
 {
-	border: 0px solid rgba(0,0,0,0.4);
+	border: 0px solid $(light_bg);
 }
 
 .submit
 {
-	color: rgba(0,0,0,0.8);
-	border: 0em solid rgba(255,255,255,1);
-	background: rgba(255,255,255,0.6);
+	color: $(dark_bg);
+	border: 0em solid $(text_color);
+	background: $(submit_bg);
 	font-weight: bold;
 }
 
@@ -128,7 +135,7 @@ img
 
 #bottombar
 {
-	background-color: rgba(0,0,0,0.5);
+	background-color: $(comment_even_bg);
 	font-size: 1em;
 	padding: 0em;
 	padding-top: 1em;
@@ -137,7 +144,7 @@ img
 
 #copyrightbar
 {
-	background-color: rgba(0,0,0,0.8);
+	background-color: $(dark_bg);
 	font-size: 1em;
 	padding: 0em;
 	padding-top: 1em;
@@ -154,16 +161,26 @@ img
 
 #navigation
 {
-	font-family: JosefinSlab;
+	font-family: $(font_fancy);
 	font-size: 1.5em;
 	font-style: italic;
 	text-align: center;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 #navigation a
 {
 	text-decoration: none;
+}
+
+#newThemeWrapper
+{
+	display: none;
+}
+
+#newPostWrap
+{
+	display: none;
 }
 
 .row
@@ -196,8 +213,8 @@ img
 	position: relative;
 	margin-right: 1em;
 	/*padding: 1em;*/
-	background-color: transparent; /*rgba(0,0,0,0.4);*/
-	border: 0.5em solid rgba(0,0,0,0.4);
+	background-color: transparent; /*$(light_bg);*/
+	border: 0.5em solid $(label_light_bg);
 	background-clip: padding-box;
 	border-radius: 0.5em;
 }
@@ -213,7 +230,7 @@ img
 	width: 0px;
 	height: 0px;
 	border-top: 1em solid transparent;
-	border-left: 1em solid rgba(0,0,0,0.4);
+	border-left: 1em solid $(label_light_bg);
 	border-bottom: 1em solid transparent;
 	border-right: 1em solid transparent;
 }
@@ -221,18 +238,20 @@ img
 .rowLabelDate
 {
 	padding: 0.5em;
+	background-color: $(label_dark_bg);
+	color: $(label_date_text_color);
 	text-align: center;
 	font-size: 1.5em;
-	background-color: rgba(0,0,0,0.8);
 }
 
 .rowLabelAuthor
 {
 	padding: 0.5em;
 	overflow-x: hidden;
+	background-color: $(label_light_bg);
+	color: $(label_country_text_color);
 	text-align: center;
 	font-size: 1.5em;
-	background-color: rgba(0,0,0,0.4);
 }
 
 .rowTriangle
@@ -242,7 +261,7 @@ img
 	width: 0px;
 	height: 0px;
 	border-top: 1em solid transparent;
-	border-left: 1em solid rgba(0,0,0,0.4);
+	border-left: 1em solid $(light_bg);
 	border-bottom: 1em solid transparent;
 	border-right: 1em solid transparent;
 }
@@ -255,19 +274,19 @@ img
 
 .rowContent
 {
-	border: 0.5em solid rgba(0,0,0,0.4);
+	border: 0.5em solid $(light_bg);
 	background-clip: padding-box;
 	border-bottom-right-radius: 0.5em 0.5em;
 	border-bottom-left-radius: 0.5em 0.5em;
 	border-top-left-radius: 0.5em 0.5em;
 	border-top-right-radius: 0.5em 0.5em;
-	border-top-color: rgba(0,0,0,0.4);
+	border-top-color: $(light_bg);
 }
 
 .rowContentText
 {
 	padding: 1em;
-	background-color: rgba(0,0,0,0.8);
+	background-color: $(dark_bg);
 }
 
 .rowCommentWrap
@@ -278,14 +297,14 @@ img
 
 .rowCommentEven
 {
-	background-color: rgba(0,0,0,0.5);
-	border-bottom: 1px solid rgba(255,255,255,0.1);
+	background-color: $(comment_even_bg);
+	border-bottom: 1px solid $(comment_separator);
 }
 
 .rowCommentOdd
 {
-	background-color: rgba(0,0,0,0.4);
-	border-bottom: 1px solid rgba(255,255,255,0.1);
+	background-color: $(light_bg);
+	border-bottom: 1px solid $(comment_separator);
 }
 
 .rowCommentAuthorWrap
@@ -321,7 +340,7 @@ img
 {
 	padding: 1em;
 	padding-left: 2em;
-	background-color: rgba(0,0,0,0.4);
+	background-color: $(light_bg);
 }
 
 .rowFullWrap
@@ -364,9 +383,9 @@ img
 {
 	margin-top: 1em;
 	padding: 1em;
-	background-color: rgba(0,0,0,0.4);
-	border-top: 0em solid rgba(0,0,0,0.4);
-	border-bottom: 0em solid rgba(0,0,0,0.4);
+	background-color: $(light_bg);
+	border-top: 0em solid $(light_bg);
+	border-bottom: 0em solid $(light_bg);
 	border-top-left-radius: 0em;
 	border-top-right-radius: 0em;
 	border-bottom-left-radius: 0em;
@@ -376,9 +395,9 @@ img
 .logoCaption
 {
 	padding: 1em;
-	background-color: rgba(0,0,0,0.8);
-	border-color:rgba(0,0,0,0.8);
-	border-top: 0em solid rgba(0,0,0,0.8);
+	background-color: $(dark_bg);
+	border-color:$(dark_bg);
+	border-top: 0em solid $(dark_bg);
 	border-top-left-radius: 0em;
 	border-top-right-radius: 0em;
 }
@@ -386,12 +405,13 @@ img
 .logoText
 {
 	position: relative;
-	font-family: "JosefinSlab";
+	font-family: $(font_fancy);
 	font-size: 4em;
 	font-style: italic;
 	font-weight: bold;
+	color: $(text_color_light_bg);
 	letter-spacing: 0.1em;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .logoText:after
@@ -403,7 +423,7 @@ img
 	margin-right: 0.3em;
 	margin-bottom: -0.2em;
 	font-size: 0.25em;
-	font-family: "MavenPro";
+	font-family: $(font_normal);
 	letter-spacing: 0.28em;
 }
 
@@ -421,7 +441,7 @@ img
 {
 	margin-bottom: 1em;
     max-width: 100%;
-	box-shadow: 0em 0em 1em 0em rgba(0,0,0,1);
+	box-shadow: 0em 0em 1em 0em $(shadow);
 	/*border: 1px solid rgba(255,255,255,0.2);*/
 }
 
@@ -431,10 +451,10 @@ img
 	left: 0em;
 	top: 0em;
 	padding: 0.5em;
-	background-color: rgba(0,0,0,0.8);
+	background-color: $(title_bg);
 	font-size: 2em;
-	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	font-family: $(font_fancy);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .pictureBottomBar
@@ -449,7 +469,7 @@ img
 {
 	clear: both;
 	width: 100%;
-	background-color: rgba(0,0,0,0.9);
+	background-color: $(content_bg);
 }
 
 .contentText
@@ -462,7 +482,7 @@ img
 {
 	clear: both;
 	float: right;
-	background-color: rgba(0,0,0,0.8);
+	background-color: $(title_bg);
 	text-align: right;
 }
 
@@ -477,7 +497,7 @@ img
 .exifWrap
 {
 	float: right;
-	background-color: rgba(0,0,0,0.6);
+	background-color: $(exif_bg);
 	text-align: center;
 }
 
@@ -485,18 +505,18 @@ img
 {
 	margin: 0.5em;
 	font-size: 1.5em;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .exifDesc
 {
 	display: inline-block;
-	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+	font-family: $(font_fancy);
 }
 
 .cityText b
 {
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .postPictureWrap
@@ -518,7 +538,7 @@ img
 	margin-right: 0.4em;
 	display: inline-block;
 	border-top: 0.4em solid transparent;
-	border-left: 0.4em solid rgba(255,255,255,1);
+	border-left: 0.4em solid $(text_color);
 	border-bottom: 0.4em solid transparent;
 	border-right: 0.4em solid transparent;
 }
@@ -531,7 +551,7 @@ img
 	margin-left: 0.4em;
 	margin-right: 0.4em;
 	display: inline-block;
-	border-top: 0.4em solid rgba(255,255,255,1);
+	border-top: 0.4em solid $(text_color);
 	border-left: 0.4em solid transparent;
 	border-bottom: 0.4em solid transparent;
 	border-right: 0.4em solid transparent;
@@ -555,9 +575,9 @@ img
 	margin-left: 0.66em; /* figure out sth better */
 	padding: 0em;
 	font-size: 1.5em;
-	font-family: JosefinSlab;
+	font-family: $(font_fancy);
 	font-style: italic;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .locationCountry
@@ -565,12 +585,12 @@ img
 	display: inline-block;
 	margin-left: 0.5em;
 	font-size: 1.5em;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .noBorderBottom
 {
-	border-bottom: 0em solid rgba(255,255,255,0.1) !important;
+	border-bottom: 0em solid $(comment_separator) !important;
 }
 
 .page-numbers
@@ -595,14 +615,35 @@ img
 {
 	padding: 1em;
 	padding-bottom: 0em;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	color: $(text_color_light_bg);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
 }
 
 .quotationAuthor
 {
 	padding: 1em;
 	padding-top: 0em;
-	font-family: 'JosefinSlab', Arial, Helvetica, sans-serif;
+	font-family: $(font_fancy);
+	color: $(text_color_light_bg);
 	text-align: right;
-	text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);
+	text-shadow: 0.1em 0.1em 0.2em $(shadow);
+}
+
+.filelist div
+{
+	padding: 0.5em;
+	border: 1px solid $(comment_separator);
+	cursor: hand;
+}
+
+.onethird
+{
+	display: inline-block;
+	width: 32%;
+	vertical-align: top;
+}
+
+.fancyFont
+{
+	font-family: $(font_fancy);
 }

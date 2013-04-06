@@ -30,15 +30,23 @@ add_action( 'init', 'photo_post_type' );
 
 function photo_post_type() {
 	register_post_type( 'photo',
-	array(
-		'labels' => array(
-			'name' => __( 'Photos' ),
-			'singular_name' => __( 'Photo' )
-		),
-		'public' => true,
-		'has_archive' => true,
-	)
+		array(
+			'labels' => array(
+				'name' => __( 'Photos' ),
+				'singular_name' => __( 'Photo' )
+			),
+			'public' => true,
+			'has_archive' => true,
+// 			'rewrite' => false, //array('slug'=>'','with_front'=>false),
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' )
+		)
 	);
+	
+// 	global $wp_rewrite;
+// 	$gallery_structure = '/photo/%year%/%monthnum%/%photo%';
+// 	$wp_rewrite->add_rewrite_tag("%photo%", '([^/]+)', "photo=");
+// 	$wp_rewrite->add_permastruct('photo', $gallery_structure, false);
+// 	$wp_rewrite->flush_rules();
 }
 
 
@@ -46,15 +54,23 @@ add_action( 'init', 'location_post_type' );
 
 function location_post_type() {
 	register_post_type( 'location',
-	array(
-		'labels' => array(
-			'name' => __( 'Location' ),
-			'singular_name' => __( 'Location' )
-		),
-		'public' => true,
-		'has_archive' => true,
-	)
+		array(
+			'labels' => array(
+				'name' => __( 'Location' ),
+				'singular_name' => __( 'Location' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' )
+		)
 	);
 }
+
+
+// add_filter( 'comment_post_redirect', 'wpse_58613_comment_redirect' );
+// function wpse_58613_comment_redirect( $location )
+// {
+// 	return 'www.wp.pl';
+// }
 
 ?>

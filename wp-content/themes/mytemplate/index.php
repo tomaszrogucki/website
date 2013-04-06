@@ -2,12 +2,6 @@
 /**
  * The main template file.
  *
- * This is the most generic templates file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
  * @package WordPress
  * @subpackage tomaszrogucki
  */
@@ -64,17 +58,18 @@ get_header(); ?>
 						</a>
 						<div class="rowContent logoCaption">
 							<div style="width: 50%; float: left;">
-								<div style="padding: 1em; text-align: justify; letter-spacing: 0.1em; line-height: 1.1em;">This website was developed 3000 meters over the Pacific Ocean, in the middle of the Amazon Jungle, on an island with no roads and no cars, in a bus crossing various countries at a time and other bizzare places documented below.<br/></div>
+								<div style="padding: 1em; text-align: justify; letter-spacing: 0.1em; line-height: 1.1em;">This website was developed 7000 meters over the Atlantic Ocean, in the middle of the Amazon Jungle, on an island with no roads and no cars, in a bus crossing various countries at a time and other bizzare places documented below.<br/></div>
 							</div>
 							<div style="width: 50%; float: right;">
 								<div style="padding: 1em; text-align: justify; letter-spacing: 0.1em; line-height: 1.1em; font-size: 1.1em;">It is a <b>Photo Diary</b> of my RTW trip. You will find here the best moments of this journey captured with a reflex camera <i>Nikon D5000</i>.<br/></div>
-								<div style="padding-right: 1em; text-align: right; font-family: 'JosefinSlab'; font-size: 1.5em; font-style: italic; text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);" >For life is a journey!</div>
+								<div style="padding-right: 1em; text-align: right; font-family: FontFancy; font-size: 1.5em; font-style: italic; text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,1);" >For life is a journey!</div>
 							</div>
 							<div style="clear: both;"></div>
 						</div><!-- .rowContent .logoCaption -->
 					</div><!-- .rowContentWrap -->
 				</div><!-- .row -->
 				
+				<!-- Admin panel -->
 				<?php if(is_user_logged_in() && current_user_can('manage_options')) { ?>
 				<div class="row">
 					<div class="rowLabelWrap">
@@ -86,26 +81,28 @@ get_header(); ?>
 						<div class="rowContent">
 							<div id="uploadPicture" class="rowContentText">
 								<form id="uploadPictureForm" enctype='multipart/form-data'>
-								    <input type="file" id="uploadPictureInput" value="Upload Photo" onChange="uploadpicture('uploadPictureInput', '<?php echo(WEB_ROOT . 'php/UploadPicture.php'); ?>');" />
+								    <input type="file" id="uploadPictureInput" value="Upload Photo" onChange="uploadpicture('uploadPictureInput', '<?php echo(WEB_ROOT . 'php/UploadPicture.php'); ?>');$('#newPostWrap').css('display','block');" />
 								    <!-- <input type="button" value="Upload" name="uploadPictureSubmit" onclick="uploadpicture('uploadPictureInput', '<?php echo(WEB_ROOT . 'php/UploadPicture.php'); ?>');" />-->
 								</form>
 								
-								<form id="newPostForm" action="<?php echo(WEB_ROOT); ?>php/NewPost.php" method="POST" enctype="multipart/form-data">
-									<input type="text" id="newPostTitle" name="newPostTitle" placeholder="Title" />
-									<input type="text" id="newPostCountry" name="newPostCountry" placeholder="Country" />
-									<input type="text" id="newPostCity" name="newPostCity" placeholder="City" />
-									<input type="text" id="newPostDate" name="newPostDate" placeholder="Date" />
-									<input type="text" id="newPostAperture" name="newPostAperture" placeholder="Aperture" />
-									<input type="text" id="newPostShutter" name="newPostShutter" placeholder="Shutter speed" />
-									<input type="text" id="newPostZoom" name="newPostZoom" placeholder="Focal length" />
-									<input type="text" id="newPostIso" name="newPostIso" placeholder="ISO" />
-									<input type="hidden" id="newPostPath" name="newPostPath" value="" />
-									<input type="hidden" id="newPostReferer" name="newPostReferer" value="<?php echo(WEB_MAIN); ?>" />
-									<input type="hidden" id="newPostUserId" name="newPostUserId" value="<?php echo($user_ID); ?>" />
-									<textarea id="newPostDescription" name="newPostDescription" placeholder="Description" cols="45" rows="8"></textarea>
-									<br/>
-									<input type="submit" value="Add new post" />
-								</form>
+								<div id="newPostWrap">
+									<form id="newPostForm" action="<?php echo(WEB_ROOT); ?>php/NewPost.php" method="POST" enctype="multipart/form-data">
+										<input type="text" id="newPostTitle" name="newPostTitle" placeholder="Title" />
+										<input type="text" id="newPostCountry" name="newPostCountry" placeholder="Country" />
+										<input type="text" id="newPostCity" name="newPostCity" placeholder="City" />
+										<input type="text" id="newPostDate" name="newPostDate" placeholder="Date" />
+										<input type="text" id="newPostAperture" name="newPostAperture" placeholder="Aperture" />
+										<input type="text" id="newPostShutter" name="newPostShutter" placeholder="Shutter speed" />
+										<input type="text" id="newPostZoom" name="newPostZoom" placeholder="Focal length" />
+										<input type="text" id="newPostIso" name="newPostIso" placeholder="ISO" />
+										<input type="hidden" id="newPostPath" name="newPostPath" value="" />
+										<input type="hidden" id="newPostReferer" name="newPostReferer" value="<?php echo(WEB_MAIN); ?>" />
+										<input type="hidden" id="newPostUserId" name="newPostUserId" value="<?php echo($user_ID); ?>" />
+										<textarea id="newPostDescription" name="newPostDescription" placeholder="Description" cols="45" rows="8"></textarea>
+										<br/>
+										<input type="submit" value="Add new post" />
+									</form>
+								</div>
 								
 								
 								<?php 
@@ -151,8 +148,306 @@ get_header(); ?>
 						</div><!-- .rowContent -->
 					</div><!-- .rowContentWrap -->
 				</div><!-- .row -->				
-				<?php } ?>
 				
+				<div class="row">
+					<div class="rowLabelWrap">
+						<div class="rowLabel">
+							<div class="rowLabelDate">Add new theme</div>
+						</div><!-- .rowLabel -->
+					</div><!-- .rowLabelWrap -->
+					<div class="rowContentWrap">
+						<div class="rowContent">
+							<div id="uploadPicture" class="rowContentText">
+								<form id="newThemeForm" action="" method="POST" enctype="multipart/form-data">
+									<div>Theme Name : <input type="text" id="newThemeName" name="newThemeName" /></div>
+									<br/>
+									<div id="newThemeShow">create new theme <div class="triangleRight"></div></div>
+									<div id="newThemeWrapper">
+										<br/>
+										<div class="onethird">
+											<b>Theme:</b><br/><br/>
+											<div id="newThemeThemes" class="filelist"></div>
+											<input type="hidden" id="newThemeTheme" name="newThemeTheme" />
+										</div>
+										<div class="onethird">
+											<b>Background:</b><br/><br/>
+											<div id="newThemeBackgrounds" class="filelist"></div>
+											<input type="hidden" id="newThemeBackground" name="newThemeBackground" />
+										</div>
+										<div class="onethird">
+											<b>Add Background Picture:</b><br/><br/>
+											<form id="newThemeUploadBackgroundPictureForm" enctype='multipart/form-data'>
+											    <input type="file" id="newThemeUploadBackgroundPictureInput" value="Upload Photo" onChange="uploadthemefile('newThemeUploadBackgroundPictureInput', 'picture', '<?php echo(WEB_ROOT . 'php/UploadThemeFile.php'); ?>'); reloadFileLists();" />
+											</form>
+											<br/>
+											<br/>
+											<b>Add Font:</b><br/><br/>
+											<form id="newThemeUploadFontForm" enctype='multipart/form-data'>
+											    <input type="file" id="newThemeUploadFontInput" value="Upload Font" onChange="uploadthemefile('newThemeUploadFontInput', 'font', '<?php echo(WEB_ROOT . 'php/UploadThemeFile.php'); ?>'); reloadFileLists();" />
+											</form>
+										</div>
+										<br/>
+										<br/>
+										<div class="onethird">
+											Normal Regular Font:<br/><br/>
+											<div id="newThemeNormalRegularFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeNormalRegularFont" name="newThemeNormalRegularFont" />
+										</div>
+										<div class="onethird">
+											Normal <b>Bold</b> Font:<br/><br/>
+											<div id="newThemeNormalBoldFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeNormalBoldFont" name="newThemeNormalBoldFont" />
+										</div>
+										<div class="onethird">
+											Normal <i>Italic</i> Font:<br/><br/>
+											<div id="newThemeNormalItalicFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeNormalItalicFont" name="newThemeNormalItalicFont" />
+										</div>
+										<br/>
+										<br/>
+										<br/>
+										<div class="onethird">
+											<span class="fancyFont">Fancy Regular Font:</span><br/><br/>
+											<div id="newThemeFancyRegularFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeFancyRegularFont" name="newThemeFancyRegularFont" />
+										</div>
+										<div class="onethird">
+											<span class="fancyFont">Fancy <b>Bold</b> Font:</span><br/><br/>
+											<div id="newThemeFancyBoldFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeFancyBoldFont" name="newThemeFancyBoldFont" />
+										</div>
+										<div class="onethird">
+											<span class="fancyFont">Fancy <i>Italic</i> Font:</span><br/><br/>
+											<div id="newThemeFancyItalicFonts" class="filelist"></div>
+											<input type="hidden" id="newThemeFancyItalicFont" name="newThemeFancyItalicFont" />
+										</div>
+										<br/>
+										<br/>
+										<div class="onethird">
+											<div>Text Color : <input type="text" id="newThemeTextColor" name="newThemeTextColor" class="colorInput" /></div>
+											<div>Text Color Light Bg : <input type="text" id="newThemeTextColorLightBg" name="newThemeTextColorLightBg" class="colorInput" /></div>
+											<div>Dark Bg : <input type="text" id="newThemeDarkBg" name="newThemeDarkBg" class="colorInput" /></div>
+											<div>Light Bg : <input type="text" id="newThemeLightBg" name="newThemeLightBg" class="colorInput" /></div>
+										</div>
+										<div class="onethird">
+											<div>Shadow : <input type="text" id="newThemeShadow" name="newThemeShadow" class="colorInput" /></div>
+											<div>Comment Even Bg : <input type="text" id="newThemeCommentEvenBg" name="newThemeCommentEvenBg" class="colorInput" /></div>
+											<div>Comment Separator : <input type="text" id="newThemeCommentSeparator" name="newThemeCommentSeparator" class="colorInput" /></div>
+										</div>
+										<div class="onethird">
+											<div>Label Date Text Color : <input type="text" id="newThemeLabelDateTextColor" name="newThemeLabelDateTextColor" class="colorInput" /></div>
+											<div>Label Country Text Color : <input type="text" id="newThemeLabelCountryTextColor" name="newThemeLabelCountryTextColor" class="colorInput" /></div>
+											<div>Label Dark Bg : <input type="text" id="newThemeLabelDarkBg" name="newThemeLabelDarkBg" class="colorInput" /></div>
+											<div>Label Light Bg : <input type="text" id="newThemeLabelLightBg" name="newThemeLabelLightBg" class="colorInput" /></div>
+										</div>
+										<br/>
+										<br/>
+										<br/>
+										<div class="onethird">
+											<div>Input Bg : <input type="text" id="newThemeInputBg" name="newThemeInputBg" class="colorInput" /></div>
+											<div>Submit Bg : <input type="text" id="newThemeSubmitBg" name="newThemeSubmitBg" class="colorInput" /></div>
+										</div>
+										<div class="onethird">
+											<div>Title Bg : <input type="text" id="newThemeTitleBg" name="newThemeTitleBg" class="colorInput" /></div>
+											<div>Content Bg : <input type="text" id="newThemeContentBg" name="newThemeContentBg" class="colorInput" /></div>
+											<div>Exif Bg : <input type="text" id="newThemeExifBg" name="newThemeExifBg" class="colorInput" /></div>
+										</div>
+										
+										<input type="hidden" id="newThemeReferer" name="newLocationReferer" value="<?php echo(WEB_MAIN); ?>" />
+										<input type="hidden" id="newThemeUserId" name="newLocationUserId" value="<?php echo($user_ID); ?>" />
+										<br/>
+										<input type="button" id="newThemeSubmit" value="Add new theme" />
+									</div>
+								</form>
+							</div>
+						</div><!-- .rowContent -->
+					</div><!-- .rowContentWrap -->
+				</div><!-- .row -->
+				
+				<!-- Scripts -->
+				
+				<script language="javascript" type="text/javascript">
+					function reloadFileLists()
+					{
+						var listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeThemes','theme',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeBackgrounds','background',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeNormalRegularFonts','font',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeNormalBoldFonts','font',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeNormalItalicFonts','font',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeFancyRegularFonts','font',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeFancyBoldFonts','font',listFiles);
+
+						listFiles = "<?php echo(WEB_ROOT . 'php/ListFiles.php'); ?>";
+						listfiles('newThemeFancyItalicFonts','font',listFiles);
+					}
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					reloadFileLists();
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					$('input[id^=newTheme]').change(function() {reloadThemeCss();});
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					function getThemeContent()
+					{
+						var themeContent = "/*" + $('#newThemeBackground').val() + "*/\n/**/\n"
+						+ "@define{font_normal_regular:" + $('#newThemeNormalRegularFont').val() + ";}\n"
+						+ "@define{font_normal_bold:" + $('#newThemeNormalBoldFont').val() + ";}\n"
+						+ "@define{font_normal_italic:" + $('#newThemeNormalItalicFont').val() + ";}\n"
+						+ "@define{font_fancy_regular:" + $('#newThemeFancyRegularFont').val() + ";}\n"
+						+ "@define{font_fancy_bold:" + $('#newThemeFancyBoldFont').val() + ";}\n"
+						+ "@define{font_fancy_italic:" + $('#newThemeFancyItalicFont').val() + ";}\n"
+						+ "@define{font_normal:FontNormal, Arial, Helvetica, sans-serif;}\n"
+						+ "@define{font_fancy:FontFancy, Arial, Helvetica, sans-serif;}\n"
+						+ "@define{text_color:" + $('#newThemeTextColor').val() + ";}\n"
+						+ "@define{text_color_light_bg:" + $('#newThemeTextColorLightBg').val() + ";}\n"
+						+ "@define{dark_bg:" + $('#newThemeDarkBg').val() + ";}\n"
+						+ "@define{light_bg:" + $('#newThemeLightBg').val() + ";}\n"
+						+ "@define{shadow:" + $('#newThemeShadow').val() + ";}\n"
+						+ "@define{comment_even_bg:" + $('#newThemeCommentEvenBg').val() + ";}\n"
+						+ "@define{comment_separator:" + $('#newThemeCommentSeparator').val() + ";}\n"
+						+ "@define{label_date_text_color:" + $('#newThemeLabelDateTextColor').val() + ";}\n"
+						+ "@define{label_country_text_color:" + $('#newThemeLabelCountryTextColor').val() + ";}\n"
+						+ "@define{label_dark_bg:" + $('#newThemeLabelDarkBg').val() + ";}\n"
+						+ "@define{label_light_bg:" + $('#newThemeLabelLightBg').val() + ";}\n"
+						+ "@define{input_bg:" + $('#newThemeInputBg').val() + ";}\n"
+						+ "@define{submit_bg:" + $('#newThemeSubmitBg').val() + ";}\n"
+						+ "@define{title_bg:" + $('#newThemeTitleBg').val() + ";}\n"
+						+ "@define{content_bg:" + $('#newThemeContentBg').val() + ";}\n"
+						+ "@define{exif_bg:" + $('#newThemeExifBg').val() + ";}\n";
+						return themeContent;
+					}
+				</script>
+				
+				
+				<script language="javascript" type="text/javascript">
+					function reloadThemeCss()
+					{
+						var bigBackground = "<?php echo(WEB_ROOT . 'php/BigBackground.php'); ?>";
+						var themeContent = getThemeContent();
+						loadStyle(bigBackground,themeContent);
+					}
+				</script>
+				
+				<script>
+					function colorInput() {
+						$(".colorInput").spectrum({
+					        preferredFormat: "rgb",
+					        showInput: true,
+					        showPalette: true,
+					        showAlpha: true,
+					        showSelectionPalette: true,
+					        localStorageKey: "spectrum.newtheme",
+					        clickoutFiresChange: true,
+					        showInitial: true,
+						});
+					}
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					function readThemeCss(theme)
+					{
+						if(typeof(theme) === 'undefined')
+							theme = 'default.css';
+						var readCssTheme = "<?php echo(WEB_ROOT . 'php/ReadCssTheme.php'); ?>";
+						readcsstheme(theme,readCssTheme);
+						$('#newThemeName').val(theme);
+						reloadThemeCss();
+						colorInput();
+					}
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					//readThemeCss();
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					$('.colorInput').change(function() {colorInput();});
+				</script>
+				
+				<script language="javascript" type="text/javascript">
+					function refreshFilelist()
+					{
+						$('.filelist div').each(function() {
+							var theId = $(this).parent().attr('id');
+							if(theId == 'newThemeThemes') {
+								if($(this).text() === $('#newThemeName').val()) {
+									$(this).siblings().css('font-weight','normal');
+									$(this).css('font-weight', 'bold');
+								};
+							}
+							else {
+								theId = theId.substring(0, theId.length - 1);
+								if($(this).text() === $('#' + theId).val()) {
+									$(this).siblings().css('font-weight','normal');
+									$(this).css('font-weight', 'bold');
+								}
+							}
+						});
+					}
+				
+					$('.filelist').delegate('div', 'click', function() {
+						//$(this).siblings().css('font-weight','normal');
+						//$(this).css('font-weight','bold');
+						var theId = $(this).parent().attr('id');
+						if(theId == 'newThemeThemes') {
+							readThemeCss($(this).text());
+						}
+						else {
+							theId = theId.substring(0, theId.length - 1);
+							$('#' + theId).val($(this).text());
+							reloadThemeCss();
+						}
+						refreshFilelist();
+					});
+					
+					$('.filelist').delegate('div', 'mouseover', function() {
+						refreshFilelist();
+					});
+				</script>
+		
+				<script language="javascript" type="text/javascript">
+					$('#newThemeSubmit').click(
+						function()
+						{
+							if($('#newThemeName').val().trim() === 'default.css')
+								return false;
+							else
+							{
+								var saveTheme = "<?php echo(WEB_ROOT . 'php/SaveTheme.php'); ?>";
+								savetheme($('#newThemeName').val().trim(), getThemeContent(), saveTheme);
+								$('#newThemeSubmit').after('<span id="themeSaved"> Theme Saved!</span>');
+								$('#newThemeSubmit').siblings('span[id=themeSaved]').fadeOut();
+							}
+						}
+					);
+				</script>
+						
+				<script language="javascript" type="text/javascript">
+					$("#newThemeShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand');},function(){$(this).css('font-weight', 'normal');});
+					$("#newThemeShow").click(function(){readThemeCss();$("#newThemeWrapper").toggle();$(this).children("div").toggleClass('triangleBottom').toggleClass('triangleRight');});
+				</script>
+				
+				<!-- End Scripts -->
+				
+				<?php } ?>
+				<!-- End Admin panel -->
 				
 				
 				<!-- Location -->
@@ -401,7 +696,12 @@ get_header(); ?>
 									?>
 									
 									<?php 
-									if(url_to_postid($_SERVER['REQUEST_URI']) > 0)
+									$path = parse_url(get_permalink($postId));
+									$query = $path['query'];
+									parse_str($query, $queryParsed);
+									$postTitle = $queryParsed['photo'];
+									if($postTitle == $_GET['photo'])
+// 									if(url_to_postid($_SERVER['REQUEST_URI']) > 0)
 									{
 									?>
 									
@@ -423,7 +723,7 @@ get_header(); ?>
 										endforeach;
 										?>
 										
-										
+										<?php if($lastCommentHoldId != -1) { ?>
 										<div class="rowCommentWrap <?php echo($i % 2 ? 'rowCommentEven' : 'rowCommentOdd'); ?>">
 											<div id="addedComment<?php echo($lastCommentHoldId); ?>" style="display: none;">
 												<div class="rowCommentAuthorWrap">
@@ -441,6 +741,7 @@ get_header(); ?>
 												</div><!-- .rowCommentContentWrap -->
 											</div>
 										</div><!-- .rowContentText -->
+										<?php } ?>
 									
 									<?php 
 									}
@@ -449,9 +750,11 @@ get_header(); ?>
 									<div class="rowCommentWrap">
 										<div class="rowCommentAddComment">
 										<?php 
+										$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 										$fields =  array(
 												'author' => '<p class="comment-form-author"><div style="width: 20%;">Name (*) : </div>' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="author" name="author" style="display: inline-block;" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
 												'email' => '<p class="comment-form-email"><div style="width: 20%;">Email (*) : </div>' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
+												'redirect_to' => '<input type="hidden" name="redirect_to" value="'.get_permalink().'&paged='.$paged.'"/>',
 										);
 										
 										$comments_args = array(
@@ -683,6 +986,7 @@ get_header(); ?>
 			if(!isNaN(addedCommentId))
 			{
 				$('#addedComment' + addedCommentId).show();
+				$('#addedComment' + addedCommentId).parent().parent().children(".rowCommentWrap").css('display','block'); // TODO: check this
 			}
 		</script>
 								
@@ -693,6 +997,11 @@ get_header(); ?>
 		<script language="javascript" type="text/javascript">
 			$(".postPictureWrap").hover(function(){$(this).children(".infoWrap").fadeOut();},function(){$(this).children(".infoWrap").fadeIn();});
 		</script>
+		
+		<script language="javascript" type="text/javascript">
+			$(".postPictureWrap").hover(function(){$(this).children(".infoWrap").fadeOut();},function(){$(this).children(".infoWrap").fadeIn();});
+		</script>
+		
 
 		<!-- 
 		<script src="<?php echo(WEB_ROOT . 'javascript/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
