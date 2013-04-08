@@ -71,6 +71,8 @@ a
 	color: $(text_color);
 	font-weight: bold;
 	text-decoration: underline;
+	border: 0em solid transparent;
+	outline: none;
 }
 
 form
@@ -98,6 +100,7 @@ textarea
 input[type="submit"]
 {
 	cursor: hand;
+	cursor: pointer;
 }
 
 img
@@ -560,6 +563,7 @@ img
 .commentShow
 {
 	cursor: hand;
+	cursor: pointer;
 	margin-left: 1em;
 }
 
@@ -613,10 +617,22 @@ img
 
 .quotation
 {
+	position: relative;
 	padding: 1em;
 	padding-bottom: 0em;
 	color: $(text_color_light_bg);
 	text-shadow: 0.1em 0.1em 0.2em $(shadow);
+	text-indent: 2em;
+}
+
+.quotation:before
+{
+	content: attr(quote);
+	position: absolute;
+	display: block;
+	font-size: 4em;
+	top: 0em;
+	left: -0.33em;
 }
 
 .quotationAuthor
@@ -634,6 +650,7 @@ img
 	padding: 0.5em;
 	border: 1px solid $(comment_separator);
 	cursor: hand;
+	cursor: pointer;
 }
 
 .onethird

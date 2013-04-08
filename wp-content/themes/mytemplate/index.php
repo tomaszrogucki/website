@@ -23,7 +23,7 @@ get_header(); ?>
 						} else {
 
 						?>
-						<div id="loginText" style="display: inline-block; cursor: hand;">login <div class="triangleRight"></div> 
+						<div id="loginText" style="display: inline-block; cursor: hand; cursor: pointer;">login <div class="triangleRight"></div> 
 						</div>
 						
 						<div style="display: inline-block;">
@@ -88,8 +88,8 @@ get_header(); ?>
 								<div id="newPostWrap">
 									<form id="newPostForm" action="<?php echo(WEB_ROOT); ?>php/NewPost.php" method="POST" enctype="multipart/form-data">
 										<input type="text" id="newPostTitle" name="newPostTitle" placeholder="Title" />
-										<input type="text" id="newPostCountry" name="newPostCountry" placeholder="Country" />
 										<input type="text" id="newPostCity" name="newPostCity" placeholder="City" />
+										<input type="text" id="newPostCountry" name="newPostCountry" placeholder="Country" />
 										<input type="text" id="newPostDate" name="newPostDate" placeholder="Date" />
 										<input type="text" id="newPostAperture" name="newPostAperture" placeholder="Aperture" />
 										<input type="text" id="newPostShutter" name="newPostShutter" placeholder="Shutter speed" />
@@ -440,7 +440,7 @@ get_header(); ?>
 				</script>
 						
 				<script language="javascript" type="text/javascript">
-					$("#newThemeShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand');},function(){$(this).css('font-weight', 'normal');});
+					$("#newThemeShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand').css('cursor','pointer');},function(){$(this).css('font-weight', 'normal');});
 					$("#newThemeShow").click(function(){readThemeCss();$("#newThemeWrapper").toggle();$(this).children("div").toggleClass('triangleBottom').toggleClass('triangleRight');});
 				</script>
 				
@@ -843,61 +843,7 @@ get_header(); ?>
 					<div class="row rowBottomBar">
 						<div class="rowContentWrap">
 							<div class="rowContentBottomBar">
-								<div class="quotationWrap">
-									<div class="quotation">
-										“Travel is fatal to prejudice, bigotry, and narrow-mindedness.“ 
-									</div>
-									<div class="quotationAuthor">
-										Mark Twain
-									</div>
-								</div>
-								<div class="quotationWrap">
-									<div class="quotation">
-										“A traveler without observation is a bird without wings.”
-									</div>
-									<div class="quotationAuthor">
-										Moslih Eddin Saadi
-									</div>
-								</div>
-								<div class="quotationWrap">
-									<div class="quotation">
-										“Two roads diverged in a wood and I – I took the one less traveled by.”
-									</div>
-									<div class="quotationAuthor">
-										Robert Frost
-									</div>
-								</div>
-								<!--
-								<div class="quotationWrap">
-									<div class="quotation">
-										“One’s destination is never a place, but a new way of seeing things.”
-									</div>
-									<div class="quotationAuthor">
-										Henry Miller
-									</div>
-								</div>
-								<div class="quotationWrap">
-									<div class="quotation">
-										“Tourists don’t know where they’ve been, travelers don’t know where they’re going.”
-									</div>
-									<div class="quotationAuthor">
-										Paul Theroux
-									</div>
-								</div>
-								<div class="quotationWrap">
-									<div class="quotation">
-										“Twenty years from now you will be more disappointed by the things you didn’t do than by the ones you did do. So throw off the bowlines, sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.”
-									</div>
-									<div class="quotationAuthor">
-										Mark Twain
-									</div>
-								</div>
-								-->
-								<!-- 
-								“The world is a book and those who do not travel read only one page.” St. Augustine<br/>
-								“For my part, I travel not to go anywhere, but to go. I travel for travel’s sake. The great affair is to move.” Robert Louis Stevenson<br/>
-								“A journey is best measured in friends, rather than miles.” Tim Cahill</br>
-								-->
+								<?php require_once(SERVER_ROOT . 'php/RandomQuotation.php'); ?>
 							</div>
 						</div><!-- .rowContentWrap -->
 					</div><!-- .row -->
@@ -907,7 +853,7 @@ get_header(); ?>
 					<div class="row rowCopyrightBar">
 						<div class="rowContentWrap">
 							<div class="rowContentCopyrightBar">
-								Copyright <b>Tomasz Rogucki</b> 2013
+								&copy; <b>Tomasz Rogucki</b> 2013
 							</div>
 						</div><!-- .rowContentWrap -->
 					</div><!-- .row -->
@@ -972,12 +918,12 @@ get_header(); ?>
 		</script>
 								
 		<script language="javascript" type="text/javascript">
-			$("#locationHistoryShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand');},function(){$(this).css('font-weight', 'normal');});
+			$("#locationHistoryShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand').css('cursor','pointer');},function(){$(this).css('font-weight', 'normal');});
 			$("#locationHistoryShow").click(function(){$(this).parent().parent().children(".rowCommentWrap").toggle();$(this).children("div").toggleClass('triangleBottom').toggleClass('triangleRight');});
 		</script>
 								
 		<script language="javascript" type="text/javascript">
-			$(".commentShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand');},function(){$(this).css('font-weight', 'normal');});
+			$(".commentShow").hover(function(){$(this).css('font-weight', 'bold').css('cursor','hand').css('cursor','pointer');},function(){$(this).css('font-weight', 'normal');});
 			$(".commentShow").click(function(){$(this).parent().parent().children(".rowCommentWrap").toggle();$(this).children("div").toggleClass('triangleBottom').toggleClass('triangleRight');});
 		</script>
 								

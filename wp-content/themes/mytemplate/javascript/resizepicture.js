@@ -10,10 +10,10 @@ function resizepicture(where, path, screenWidth, resizePicture)
 	
 	request.done(function(msg) {
 //		picturePlaceholder.append('<img src="data:image/jpeg;base64,' + msg + '" class="postPicture" />');
-		picturePlaceholder.append('<img src="' + msg + '" class="postPicture" />');
+		picturePlaceholder.append('<a href="' + path + '" target="_blank"><img src="' + msg + '" class="postPicture" /></a>');
 	});
 	
 	request.fail(function(jqXHR, textStatus) {
-		picturePlaceholder.append('<img src="' + path + '" class="postPicture" />');
+		picturePlaceholder.append('<a href="' + path + '" target="_blank"><img src="' + path + '" class="postPicture" /></a>');
 	});
 }
