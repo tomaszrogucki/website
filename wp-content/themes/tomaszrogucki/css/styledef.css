@@ -1,0 +1,25 @@
+/*bgPanoramic.jpg*/
+@define{font_normal_regular:MavenProRegular.ttf;}
+@define{font_normal_bold:MavenProBold.ttf;}
+@define{font_normal_italic:MavenProRegular.ttf;}
+@define{font_fancy_regular:JosefinSlabRegular.ttf;}
+@define{font_fancy_bold:JosefinSlabRegular.ttf;}
+@define{font_fancy_italic:JosefinSlabItalic.ttf;}
+@define{font_normal:FontNormal, Arial, Helvetica, sans-serif;}
+@define{font_fancy:FontFancy, Arial, Helvetica, sans-serif;}
+@define{dark_bg:rgba(0,0,0,0.8);}
+@define{light_bg:rgba(0,0,0,0.4);}
+@define{label_dark_bg:rgba(0,0,0,0.8);}
+@define{label_light_bg:rgba(0,0,0,0.4);}
+@define{text_color:rgba(255,255,255,1);}
+@define{text_color_light_bg:rgba(255,255,255,1);}
+@define{label_date_text_color:rgba(255,255,255,1);}
+@define{label_country_text_color:rgba(255,255,255,1);}
+@define{input_bg:rgba(255,255,255,0.4);}
+@define{submit_bg:rgba(255,255,255,0.6);}
+@define{comment_even_bg:rgba(0,0,0,0.5);}
+@define{shadow:rgba(0,0,0,1);}
+@define{comment_separator:rgba(255,255,255,0.1);}
+@define{content_bg:rgba(0,0,0,0.9);}
+@define{title_bg:rgba(0,0,0,0.8);}
+@define{exif_bg:rgba(0,0,0,0.6);}@define{bg_pic:"http://localhost/website/wp-content/themes/tomaszrogucki/pictures/backgrounds/resized/h768bgPanoramic.jpg";}
